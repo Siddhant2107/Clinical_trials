@@ -1,0 +1,15 @@
+streamlit
+pandas
+numpy
+altair
+matplotlib
+seaborn
+plotly
+scipy
+nltk
+scikit-learn
+lightgbm
+pillow
+requests
+streamlit-lottie
+streamlit-option-menu
