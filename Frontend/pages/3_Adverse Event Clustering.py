@@ -216,7 +216,7 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-st.image(r"C:\Users\Siddhant Nijhawan\Downloads\Nest images of model webpage\output.jpg", use_column_width=True)
+st.image(r"C:\Users\Siddhant Nijhawan\Downloads\git2\Frontend\pages\output.jpg", use_column_width=True)
 
 # Cluster Explorer - Removed -1 cluster
 st.markdown('<h2 class="gradient-text">Explore Clusters</h2>', unsafe_allow_html=True)

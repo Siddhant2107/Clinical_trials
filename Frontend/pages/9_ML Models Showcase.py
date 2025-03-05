@@ -864,14 +864,14 @@ def display_xgboost_visuals():
     
     with col1:
         st.markdown('<h4 style="color: #1e3a5c;">Top 20 Features in XGBoost</h4>', unsafe_allow_html=True)
-        st.image(r"C:\Users\Siddhant Nijhawan\Downloads\Nest images of model webpage\xgboost_top20.png", caption="Top 20 Most Important Features", use_column_width=True)
+        st.image(r"C:\Users\Siddhant Nijhawan\Downloads\git2\Frontend\pages\xgboost_top20.png", caption="Top 20 Most Important Features", use_column_width=True)
     
     with col2:
         st.markdown('<h4 style="color: #1e3a5c;">SHAP Explanation Summary</h4>', unsafe_allow_html=True)
-        st.image(r"C:\Users\Siddhant Nijhawan\Downloads\Nest images of model webpage\xgboost_shap.png", caption="SHAP Summary Plot", use_column_width=True)
+        st.image(r"C:\Users\Siddhant Nijhawan\Downloads\git2\Frontend\pages\xgboost_shap.png", caption="SHAP Summary Plot", use_column_width=True)
     
     st.markdown('<h4 style="color: #1e3a5c;">SHAP Dependence Plot</h4>', unsafe_allow_html=True)
-    st.image(r"C:\Users\Siddhant Nijhawan\Downloads\Nest images of model webpage\xgboost_shap2.png", caption="SHAP Dependence Plot", use_column_width=True)
+    st.image(r"C:\Users\Siddhant Nijhawan\Downloads\git2\Frontend\pages\xgboost_shap2.png", caption="SHAP Dependence Plot", use_column_width=True)
 
 def run_xgboost_on_train_data():
     """Run XGBoost model on training and validation datasets"""
