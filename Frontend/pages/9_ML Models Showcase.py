@@ -8,6 +8,7 @@ st.set_page_config(
 )
 
 
+
 st.sidebar.title("🔄 Navigate")
 
 pages = [
@@ -42,6 +43,8 @@ import pandas as pd
 import numpy as np
 import pickle
 import time
+import pandas as pd
+import gdown
 import os
 from PIL import Image
 import matplotlib.pyplot as plt
@@ -886,8 +889,6 @@ def run_xgboost_on_train_data():
     
     
 
-        import pandas as pd
-        import gdown
 
         def download_and_load_csv(file_id, output_path):
             """Download a CSV file from Google Drive and load it into a DataFrame."""
