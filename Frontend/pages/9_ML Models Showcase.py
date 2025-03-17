@@ -183,7 +183,7 @@ def load_image(image_path):
 # Simulated data loading (replace with actual file paths)
 def get_image_path(file_name):
     # Replace this with the correct path for your environment
-    base_path = r"https://raw.githubusercontent.com/Siddhant2107/Clinical_trials/main/Frontend/pages"
+    base_path = r"https://raw.githubusercontent.com/Siddhant2107/Clinical_trials/refs/heads/master/Frontend/pages"
     return os.path.join(base_path, file_name)
 
 # Main app structure
@@ -424,10 +424,14 @@ def display_logistic_regression_results():
     """
     st.markdown(table_html, unsafe_allow_html=True)
 
-    # Confusion Matrix
 
-    image_url = "https://raw.githubusercontent.com/Siddhant2107/Clinical_trials/refs/heads/master/Frontend/pages/logistic_confusion.png"
-    st.image(image_url, caption="My Image")
+    # Confusion Matrix
+    st.markdown('<h4>Confusion Matrix:</h4>', unsafe_allow_html=True)
+    confusion_matrix = load_image(get_image_path("logistic_confusion.png"))
+    if confusion_matrix:
+        st.image(confusion_matrix, use_column_width=True)
+    else:
+        st.info("Confusion matrix visualization not available")
         
         
         
