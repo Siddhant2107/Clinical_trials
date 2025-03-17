@@ -13,3 +13,4 @@ pillow
 requests
 streamlit-lottie
 streamlit-option-menu
+gdown
