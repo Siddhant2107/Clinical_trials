@@ -183,7 +183,7 @@ def load_image(image_path):
 # Simulated data loading (replace with actual file paths)
 BASE_URL = "https://raw.githubusercontent.com/Siddhant2107/Clinical_trials/refs/heads/master/Frontend/pages/"
 
-def get_image_url(file_name):
+def get_image_path(file_name):
     return f"{BASE_URL}{file_name}"
 
 # Main app structure
