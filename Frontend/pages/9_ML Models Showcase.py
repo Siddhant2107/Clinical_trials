@@ -1060,8 +1060,21 @@ def run_xgboost_on_test_data():
 
         st.markdown('<div style="background-color: #f0f5ff; padding: 10px; border-radius: 5px; border-left: 5px solid #4361ee;"><span style="color: #1e3a5c; font-weight: bold;"> Loading and applying scaler...</span></div>', unsafe_allow_html=True)
         # Load the trained StandardScaler used during training
-        with open(r"C:\Users\Siddhant Nijhawan\Downloads\Nest images of model webpage\scaler.pkl", 'rb') as f:
+        def download_pickle_from_drive(file_id, output_path):
+            url = f"https://drive.google.com/uc?export=download&id={file_id}"
+            gdown.download(url, output_path, quiet=False)
+
+        # Replace with your actual Google Drive file ID
+        scaler_file_id = "15UQALIaGW2_ww8fe6hq3Dt-drxPbzzdU"
+        scaler_path = "scaler.pkl"  # Temporary local storage
+
+        # Download the scaler file
+        download_pickle_from_drive(scaler_file_id, scaler_path)
+
+        # Load the scaler
+        with open(scaler_path, 'rb') as f:
             scaler = pickle.load(f)
+
 
         # Apply the same Standard Scaling transformation
         X_test_reduced = pd.DataFrame(scaler.transform(X_test_reduced), columns=X_test_reduced.columns)
