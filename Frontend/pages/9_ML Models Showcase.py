@@ -883,16 +883,25 @@ def run_xgboost_on_train_data():
 
         st.markdown('<div style="background-color: #f0f5ff; padding: 10px; border-radius: 5px; border-left: 5px solid #4361ee;"><span style="color: #1e3a5c; font-weight: bold;"> Loading training and validation datasets...</span></div>', unsafe_allow_html=True)
         
+      
+    
+
         def get_drive_csv(file_id):
             return f"https://drive.google.com/uc?id={file_id}"
 
-        # Replace with your actual file IDs from Google Drive
+        # Replace with actual file IDs
         train_file_id = "1K-MSY0I33fRn2ghv7QNFYUlizuHE7XL3"
         val_file_id = "1lJTDs41J3rJn2VaT9p8DK47P87eS3yBa"
 
-        # Load datasets from Google Drive
+        # Load datasets
         X_train_df = pd.read_csv(get_drive_csv(train_file_id))
         X_val_df = pd.read_csv(get_drive_csv(val_file_id))
+
+        # Debug: Print the column names to check if 'Study Status' exists
+        st.write("Train Data Columns:", X_train_df.columns.tolist())
+        st.write("Validation Data Columns:", X_val_df.columns.tolist())
+
+
 
         # Extract true labels
         y_train = X_train_df['Study Status']
