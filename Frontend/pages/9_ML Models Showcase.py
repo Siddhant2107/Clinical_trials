@@ -425,12 +425,50 @@ def display_logistic_regression_results():
     st.markdown(table_html, unsafe_allow_html=True)
 
     # Confusion Matrix
+    def load_image(image_url):
+        from PIL import Image
+        import requests
+        from io import BytesIO
+
+        try:
+            response = requests.get(image_url)
+            image = Image.open(BytesIO(response.content))
+            return image
+        except Exception as e:
+            st.error(f"Error loading image: {e}")
+            return None
+            
+
+    # Raw GitHub URL of the image
+    image_url = "https://raw.githubusercontent.com/Siddhant2107/Clinical_trials/main/Frontend/pages/logistic_confusion.png"
+
+    # Display Confusion Matrix
     st.markdown('<h4>Confusion Matrix:</h4>', unsafe_allow_html=True)
-    confusion_matrix = load_image(get_image_path("logistic_confusion.png"))
+    confusion_matrix = load_image(image_url)
+
     if confusion_matrix:
         st.image(confusion_matrix, use_column_width=True)
     else:
-        st.info("Confusion matrix visualization not available")
+        st.info("Confusion matrix visualization not available.")
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     # ROC Curve
     st.markdown('<h4>ROC Curve:</h4>', unsafe_allow_html=True)
