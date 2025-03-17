@@ -883,33 +883,44 @@ def run_xgboost_on_train_data():
 
         st.markdown('<div style="background-color: #f0f5ff; padding: 10px; border-radius: 5px; border-left: 5px solid #4361ee;"><span style="color: #1e3a5c; font-weight: bold;"> Loading training and validation datasets...</span></div>', unsafe_allow_html=True)
         
-      
+    
     
 
-        def get_drive_csv(file_id):
-            return f"https://drive.google.com/uc?id={file_id}"
+        import pandas as pd
+        import gdown
 
-        # Replace with actual file IDs
+        def download_and_load_csv(file_id, output_path):
+            """Download a CSV file from Google Drive and load it into a DataFrame."""
+            url = f"https://drive.google.com/uc?id={file_id}"
+            gdown.download(url, output_path, quiet=False)
+            return pd.read_csv(output_path)
+
+        # Google Drive file IDs
         train_file_id = "1K-MSY0I33fRn2ghv7QNFYUlizuHE7XL3"
         val_file_id = "1lJTDs41J3rJn2VaT9p8DK47P87eS3yBa"
 
-        # Load datasets
-        X_train_df = pd.read_csv(get_drive_csv(train_file_id))
-        X_val_df = pd.read_csv(get_drive_csv(val_file_id))
+        # Download and load datasets
+        train_csv_path = "train_data_reduced.csv"
+        val_csv_path = "val_data_reduced.csv"
 
-        # Debug: Print the column names to check if 'Study Status' exists
-        st.write("Train Data Columns:", X_train_df.columns.tolist())
-        st.write("Validation Data Columns:", X_val_df.columns.tolist())
+        X_train_df = download_and_load_csv(train_file_id, train_csv_path)
+        X_val_df = download_and_load_csv(val_file_id, val_csv_path)
 
+        # Verify Column Names
+        print("Train Data Columns:", X_train_df.columns.tolist())
+        print("Validation Data Columns:", X_val_df.columns.tolist())
 
+        # Extract Target Variable
+        if 'Study Status' in X_train_df.columns and 'Study Status' in X_val_df.columns:
+            y_train = X_train_df['Study Status']
+            y_val = X_val_df['Study Status']
 
-        # Extract true labels
-        y_train = X_train_df['Study Status']
-        y_val = X_val_df['Study Status']
+            # Drop target column from features
+            X_train_reduced = X_train_df.drop(columns=['Study Status'])
+            X_val_reduced = X_val_df.drop(columns=['Study Status'])
+        else:
+            print("Error: 'Study Status' column not found in dataset!")
 
-        # Drop target column from features
-        X_train_reduced = X_train_df.drop(columns=['Study Status'])
-        X_val_reduced = X_val_df.drop(columns=['Study Status'])
 
         st.markdown('<div style="background-color: #f0f5ff; padding: 10px; border-radius: 5px; border-left: 5px solid #4361ee;"><span style="color: #1e3a5c; font-weight: bold;"> Handling missing data...</span></div>', unsafe_allow_html=True)
         # Handle missing data (replace Inf and NaN values)
