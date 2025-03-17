@@ -859,11 +859,21 @@ def display_xgboost_visuals():
     
     with col1:
         st.markdown('<h4 style="color: #1e3a5c;">Top 20 Features in XGBoost</h4>', unsafe_allow_html=True)
-        st.image(r"C:\Users\Siddhant Nijhawan\Downloads\git2\Frontend\pages\xgboost_top20.png", caption="Top 20 Most Important Features", use_column_width=True)
+        BASE_URL = "https://raw.githubusercontent.com/Siddhant2107/Clinical_trials/refs/heads/master/Frontend/pages/"
+
+        def get_image_url(file_name):
+            return f"{BASE_URL}{file_name}"  # Properly construct the full URL
+        roc_curve_url = get_image_url("xgboost_top20.png")
+        st.image(roc_curve_url, caption="Top 20 Most Important Features", use_column_width=True)
     
     with col2:
         st.markdown('<h4 style="color: #1e3a5c;">SHAP Explanation Summary</h4>', unsafe_allow_html=True)
-        st.image(r"https://github.com/Siddhant2107/Clinical_trials/blob/master/Frontend/pages/xgboost_shap.png", caption="SHAP Summary Plot", use_column_width=True)
+        BASE_URL = "https://raw.githubusercontent.com/Siddhant2107/Clinical_trials/refs/heads/master/Frontend/pages/"
+
+        def get_image_url(file_name):
+            return f"{BASE_URL}{file_name}"  # Properly construct the full URL
+        roc_curve_url = get_image_url("xgboost_shap.png")
+        st.image(roc_curve_url, caption="SHAP Summary Plot", use_column_width=True)
     
     st.markdown('<h4 style="color: #1e3a5c;">SHAP Dependence Plot</h4>', unsafe_allow_html=True)
     st.image(r"C:\Users\Siddhant Nijhawan\Downloads\git2\Frontend\pages\xgboost_shap2.png", caption="SHAP Dependence Plot", use_column_width=True)
