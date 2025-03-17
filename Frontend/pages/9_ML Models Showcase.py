@@ -183,7 +183,7 @@ def load_image(image_path):
 # Simulated data loading (replace with actual file paths)
 def get_image_path(file_name):
     # Replace this with the correct path for your environment
-    base_path = r"https://raw.githubusercontent.com/Siddhant2107/Clinical_trials/refs/heads/master/Frontend/pages"
+    base_path = r"https://raw.githubusercontent.com/Siddhant2107/Clinical_trials/main/Frontend/pages"
     return os.path.join(base_path, file_name)
 
 # Main app structure
@@ -424,53 +424,27 @@ def display_logistic_regression_results():
     """
     st.markdown(table_html, unsafe_allow_html=True)
 
+    # Define the base URL
+    BASE_URL = "https://raw.githubusercontent.com/Siddhant2107/Clinical_trials/refs/heads/master/Frontend/pages/"
+
+    def get_image_url(file_name):
+        return f"{BASE_URL}{file_name}"  # Properly construct the full URL
 
     # Confusion Matrix
     st.markdown('<h4>Confusion Matrix:</h4>', unsafe_allow_html=True)
-    confusion_matrix = load_image(get_image_path("logistic_confusion.png"))
-    if confusion_matrix:
-        st.image(confusion_matrix, use_column_width=True)
-    else:
-        st.info("Confusion matrix visualization not available")
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
-    
-    
+    confusion_matrix_url = get_image_url("logistic_confusion.png")
+    st.image(confusion_matrix_url, caption="Confusion Matrix", use_column_width=True)
 
     # ROC Curve
     st.markdown('<h4>ROC Curve:</h4>', unsafe_allow_html=True)
-    roc_curve = load_image(get_image_path("logistic_roc.png"))
-    if roc_curve:
-        st.image(roc_curve, use_column_width=True)
-    else:
-        st.info("ROC curve visualization not available")
+    roc_curve_url = get_image_url("logistic_roc.png")
+    st.image(roc_curve_url, caption="ROC Curve", use_column_width=True)
 
     # LIME Explanation
     st.markdown('<h3 class="sub-header animated-box">Model Explainability (LIME)</h3>', unsafe_allow_html=True)
-    
-    lime_image = load_image(get_image_path("lime_logistioc.png"))
-    if lime_image:
-        st.image(lime_image, use_column_width=True)
-    else:
-        st.info("LIME explanation visualization not available")
+    lime_image_url = get_image_url("lime_logistioc.png")
+    st.image(lime_image_url, caption="LIME Explanation", use_column_width=True)
+
 
     # Interpretation
     st.markdown("""
