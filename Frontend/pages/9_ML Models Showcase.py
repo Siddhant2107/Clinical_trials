@@ -181,10 +181,10 @@ def load_image(image_path):
         return None
 
 # Simulated data loading (replace with actual file paths)
-def get_image_path(file_name):
-    # Replace this with the correct path for your environment
-    base_path = r"https://raw.githubusercontent.com/Siddhant2107/Clinical_trials/main/Frontend/pages"
-    return os.path.join(base_path, file_name)
+BASE_URL = "https://raw.githubusercontent.com/Siddhant2107/Clinical_trials/refs/heads/master/Frontend/pages/"
+
+def get_image_url(file_name):
+    return f"{BASE_URL}{file_name}"
 
 # Main app structure
 def main():
