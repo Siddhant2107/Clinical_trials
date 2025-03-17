@@ -876,7 +876,12 @@ def display_xgboost_visuals():
         st.image(roc_curve_url, caption="SHAP Summary Plot", use_column_width=True)
     
     st.markdown('<h4 style="color: #1e3a5c;">SHAP Dependence Plot</h4>', unsafe_allow_html=True)
-    st.image(r"C:\Users\Siddhant Nijhawan\Downloads\git2\Frontend\pages\xgboost_shap2.png", caption="SHAP Dependence Plot", use_column_width=True)
+    BASE_URL = "https://raw.githubusercontent.com/Siddhant2107/Clinical_trials/refs/heads/master/Frontend/pages/"
+
+    def get_image_url(file_name):
+        return f"{BASE_URL}{file_name}"  # Properly construct the full URL
+    roc_curve_url = get_image_url("xgboost_shap2.png")
+    st.image(roc_curve_url, caption="SHAP Dependence Plot", use_column_width=True)
 
 def run_xgboost_on_train_data():
     """Run XGBoost model on training and validation datasets"""
