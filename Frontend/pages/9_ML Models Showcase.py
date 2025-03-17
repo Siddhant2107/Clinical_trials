@@ -868,7 +868,7 @@ def display_xgboost_visuals():
     
     with col2:
         st.markdown('<h4 style="color: #1e3a5c;">SHAP Explanation Summary</h4>', unsafe_allow_html=True)
-        st.image(r"C:\Users\Siddhant Nijhawan\Downloads\git2\Frontend\pages\xgboost_shap.png", caption="SHAP Summary Plot", use_column_width=True)
+        st.image(r"https://github.com/Siddhant2107/Clinical_trials/blob/master/Frontend/pages/xgboost_shap.png", caption="SHAP Summary Plot", use_column_width=True)
     
     st.markdown('<h4 style="color: #1e3a5c;">SHAP Dependence Plot</h4>', unsafe_allow_html=True)
     st.image(r"C:\Users\Siddhant Nijhawan\Downloads\git2\Frontend\pages\xgboost_shap2.png", caption="SHAP Dependence Plot", use_column_width=True)
