@@ -883,9 +883,16 @@ def run_xgboost_on_train_data():
 
         st.markdown('<div style="background-color: #f0f5ff; padding: 10px; border-radius: 5px; border-left: 5px solid #4361ee;"><span style="color: #1e3a5c; font-weight: bold;"> Loading training and validation datasets...</span></div>', unsafe_allow_html=True)
         
-        # Load the training and validation datasets
-        X_train_df = pd.read_csv(r"C:\Users\Siddhant Nijhawan\Downloads\Nest images of model webpage\train_data_reduced.csv")
-        X_val_df = pd.read_csv(r"C:\Users\Siddhant Nijhawan\Downloads\Nest images of model webpage\val_data_reduced.csv")
+        def get_drive_csv(file_id):
+            return f"https://drive.google.com/uc?id={file_id}"
+
+        # Replace with your actual file IDs from Google Drive
+        train_file_id = "1K-MSY0I33fRn2ghv7QNFYUlizuHE7XL3"
+        val_file_id = "1lJTDs41J3rJn2VaT9p8DK47P87eS3yBa"
+
+        # Load datasets from Google Drive
+        X_train_df = pd.read_csv(get_drive_csv(train_file_id))
+        X_val_df = pd.read_csv(get_drive_csv(val_file_id))
 
         # Extract true labels
         y_train = X_train_df['Study Status']
@@ -996,7 +1003,14 @@ def run_xgboost_on_test_data():
 
         st.markdown('<div style="background-color: #f0f5ff; padding: 10px; border-radius: 5px; border-left: 5px solid #4361ee;"><span style="color: #1e3a5c; font-weight: bold;"> Loading test dataset...</span></div>', unsafe_allow_html=True)
         # Load the X_test data (already preprocessed and reduced)
-        x_test_val_df = pd.read_csv(r"C:\Users\Siddhant Nijhawan\Downloads\Nest images of model webpage\test_data_reduced.csv")
+        def get_drive_csv(file_id):
+            return f"https://drive.google.com/uc?id={file_id}"
+
+        # Replace with your actual file ID
+        test_file_id = "1bZDKTm-vtys5_dI0FJ8Hbd-4DqcZ5e0R"  # Replace with the actual file ID from Google Drive
+
+        # Load test dataset from Google Drive
+        x_test_val_df = pd.read_csv(get_drive_csv(test_file_id))
 
         # Extract true labels
         y_true_new_data = x_test_val_df['Study Status']
