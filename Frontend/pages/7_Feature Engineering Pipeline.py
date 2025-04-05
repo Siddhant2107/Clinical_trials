@@ -70,9 +70,9 @@ if 'encoded_data' not in st.session_state:
 # Load data directly (for large files)
 @st.cache_data
 def load_data():
-    # Replace this with your actual data loading logic
-    return pd.read_csv(r"C:\Users\Siddhant Nijhawan\Downloads\Nest_Codes\Dropped_columns_files\sidd.csv")
-
+    file_id = "1G1_teUIEGAoblrlm2aaXC3SaCz8sKrIM"
+    gdrive_url = f"https://drive.google.com/uc?id={file_id}"
+    return pd.read_csv(gdrive_url)
 
 # Page config
 
