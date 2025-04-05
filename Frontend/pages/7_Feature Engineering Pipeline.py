@@ -78,25 +78,20 @@ def load_data():
     import pandas as pd
     import requests
     import io
-    import csv
 
     file_id = "1G1_teUIEGAoblrlm2aaXC3SaCz8sKrIM"
-    url = f"https://drive.google.com/uc?id={file_id}"
-    
-    response = requests.get(url)
+    gdrive_url = f"https://drive.google.com/uc?export=download&id={file_id}"
+
+    response = requests.get(gdrive_url)
     response.raise_for_status()
-    content = response.content.decode("utf-8")
 
-    # Auto-detect delimiter
-    sniffer = csv.Sniffer()
-    dialect = sniffer.sniff(content.splitlines()[0])
+    # Read as a proper CSV
+    df = pd.read_csv(io.StringIO(response.text))
 
-    # Read using the detected delimiter
-    df = pd.read_csv(io.StringIO(content), delimiter=dialect.delimiter, engine='python', on_bad_lines='skip')
-
+    # Optional: clean column names
     df.columns = df.columns.str.strip()
-    return df
 
+    return df
 
 # Page config
 
