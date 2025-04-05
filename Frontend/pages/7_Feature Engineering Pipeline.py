@@ -1,5 +1,10 @@
 import streamlit as st
 import os
+from sklearn.preprocessing import LabelEncoder
+import pickle
+import streamlit as st
+
+
 st.set_page_config(
     page_title="Feature Engineering Pipeline",
     layout="wide",
@@ -276,22 +281,33 @@ if selected == "Low Cardinality":
             }
             st.dataframe(pd.DataFrame(sex_encoding))
         
+
         if apply_encoding:
             try:
-                if st.session_state.data is None:
+                if st.session_state.get("data") is None:
                     st.session_state.data = load_data()
-                
-                with st.spinner("Applying Label Encoding..."):
-                    label_encoder = LabelEncoder()
-                    st.session_state.data[feature] = label_encoder.fit_transform(st.session_state.data[feature])
-                    
-                    st.write("Sample of encoded data:")
-                    st.dataframe(st.session_state.data[[feature]].head())
-                    
-                    with open(f'label_encoder_{feature}.pkl', 'wb') as f:
-                        pickle.dump(label_encoder, f)
+
+                # Show available columns for debugging
+                st.write("Available columns:", list(st.session_state.data.columns))
+
+                if feature not in st.session_state.data.columns:
+                    st.error(f"Column '{feature}' not found in the dataset.")
+                else:
+                    with st.spinner("Applying Label Encoding..."):
+                        label_encoder = LabelEncoder()
+                        st.session_state.data[feature] = label_encoder.fit_transform(
+                            st.session_state.data[feature].astype(str)
+                        )
+
+                        st.write("Sample of encoded data:")
+                        st.dataframe(st.session_state.data[[feature]].head())
+
+                        with open(f'label_encoder_{feature}.pkl', 'wb') as f:
+                            pickle.dump(label_encoder, f)
+
             except Exception as e:
                 st.error(f"Error during encoding: {str(e)}")
+
 
 elif selected == "Medium Cardinality":
     st.title("🔀 Medium Cardinality Processing")
