@@ -85,12 +85,32 @@ def load_data():
     response = requests.get(gdrive_url)
     response.raise_for_status()
 
-    # Read as a proper CSV
-    df = pd.read_csv(io.StringIO(response.text))
-
-    # Optional: clean column names
+    # Try different parsing parameters to handle the inconsistent CSV
+    try:
+        # First attempt with automatic quoting detection and error handling
+        df = pd.read_csv(
+            io.StringIO(response.text),
+            engine='python',  # More flexible but slower engine
+            on_bad_lines='warn',  # Warn about problematic lines instead of failing
+            quoting=3,  # QUOTE_NONE - Disable quote detection
+            escapechar='\\'  # Use backslash as escape character
+        )
+    except Exception as e:
+        # Second attempt with more aggressive error handling
+        df = pd.read_csv(
+            io.StringIO(response.text),
+            engine='python',
+            on_bad_lines='skip',  # Skip problematic lines entirely
+            quoting=3,
+            escapechar='\\'
+        )
+    
+    # Clean column names
     df.columns = df.columns.str.strip()
-
+    
+    # Log data shape for debugging
+    print(f"Loaded data with shape: {df.shape}")
+    
     return df
 
 # Page config
