@@ -70,9 +70,11 @@ if 'encoded_data' not in st.session_state:
 # Load data directly (for large files)
 @st.cache_data
 def load_data():
+    import pandas as pd
     file_id = "1G1_teUIEGAoblrlm2aaXC3SaCz8sKrIM"
     gdrive_url = f"https://drive.google.com/uc?id={file_id}"
-    return pd.read_csv(gdrive_url)
+    return pd.read_csv(gdrive_url, on_bad_lines='skip', engine='python')
+
 
 # Page config
 
