@@ -38,10 +38,36 @@ import pandas as pd
 import numpy as np
 import altair as alt
 import matplotlib.pyplot as plt
+import gdown
 
 # Load dataset
 sidd = pd.read_csv(r"C:\Users\Siddhant Nijhawan\Downloads\Nest_Codes\Dropped_columns_files\null_values_dealt.csv")
 sidd.drop(["Unnamed: 0"], axis=1, inplace=True)
+
+def download_and_load_csv(file_id, output_path):
+    """Download a CSV file from Google Drive and load it into a DataFrame."""
+    url = f"https://drive.google.com/uc?id={file_id}"
+    gdown.download(url, output_path, quiet=False)
+    df = pd.read_csv(output_path)
+    
+    # Drop the unnamed column if it exists
+    if "Unnamed: 0" in df.columns:
+        df.drop(["Unnamed: 0"], axis=1, inplace=True)
+        
+    return df
+
+null_values_file_id = "1fESesydxwvWkY3Ftqe70JNN616cJLest"  
+
+output_path = "null_values_dealt.csv"
+sidd = download_and_load_csv(null_values_file_id, output_path)
+
+
+
+
+
+
+
+
 
 st.title('📊 Outlier Detection & Skewness Handling')
 
