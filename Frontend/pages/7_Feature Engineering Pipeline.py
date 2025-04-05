@@ -76,12 +76,24 @@ if 'encoded_data' not in st.session_state:
 @st.cache_data
 def load_data():
     import pandas as pd
+    import requests
+    import io
+    import csv
+
     file_id = "1G1_teUIEGAoblrlm2aaXC3SaCz8sKrIM"
     url = f"https://drive.google.com/uc?id={file_id}"
     
-    # Use more tolerant parser
-    df = pd.read_csv(url, engine='python', on_bad_lines='skip', encoding='utf-8')
-    # Clean column names
+    response = requests.get(url)
+    response.raise_for_status()
+    content = response.content.decode("utf-8")
+
+    # Auto-detect delimiter
+    sniffer = csv.Sniffer()
+    dialect = sniffer.sniff(content.splitlines()[0])
+
+    # Read using the detected delimiter
+    df = pd.read_csv(io.StringIO(content), delimiter=dialect.delimiter, engine='python', on_bad_lines='skip')
+
     df.columns = df.columns.str.strip()
     return df
 
