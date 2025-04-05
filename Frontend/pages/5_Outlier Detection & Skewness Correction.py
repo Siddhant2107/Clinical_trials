@@ -41,8 +41,6 @@ import matplotlib.pyplot as plt
 import gdown
 
 # Load dataset
-sidd = pd.read_csv(r"C:\Users\Siddhant Nijhawan\Downloads\Nest_Codes\Dropped_columns_files\null_values_dealt.csv")
-sidd.drop(["Unnamed: 0"], axis=1, inplace=True)
 
 def download_and_load_csv(file_id, output_path):
     """Download a CSV file from Google Drive and load it into a DataFrame."""
