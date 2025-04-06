@@ -42,7 +42,7 @@ import gdown
 import os
 
 # Load dataset
-file_id_csv = '1fESesydxwvWkY3Ftqe70JNN616cJLest'  # Replace with your CSV file ID
+file_id_csv = '1fESesydxwvWkY3Ftqe70JNN616cJLest'  
 output_path_csv = 'null_values_dealt.csv'
 url_csv = f'https://drive.google.com/uc?id={file_id_csv}'
 gdown.download(url_csv, output_path_csv, quiet=False)

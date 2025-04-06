@@ -216,7 +216,14 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-st.image(r"C:\Users\Siddhant Nijhawan\Downloads\git2\Frontend\pages\output.jpg", use_column_width=True)
+BASE_URL = "https://raw.githubusercontent.com/Siddhant2107/Clinical_trials/refs/heads/master/Frontend/pages/"
+def get_image_url(file_name):
+        return f"{BASE_URL}{file_name}"  # Properly construct the full URL
+
+output_url = get_image_url("output.jpg")
+st.image(output_url, use_column_width=True)
+
+#st.image(r"C:\Users\Siddhant Nijhawan\Downloads\git2\Frontend\pages\output.jpg", use_column_width=True)
 
 # Cluster Explorer - Removed -1 cluster
 st.markdown('<h2 class="gradient-text">Explore Clusters</h2>', unsafe_allow_html=True)
