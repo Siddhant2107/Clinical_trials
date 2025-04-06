@@ -39,9 +39,21 @@ import numpy as np
 import time
 from streamlit_lottie import st_lottie
 import json
+import gdown
+import os
 
 # Load dataset
-final_result5 = pd.read_excel(r"C:\Users\Siddhant Nijhawan\Downloads\Nest_Codes\Dropped_columns_files\final_result5.xlsx")
+file_id = '1aCdIUjkVVM0yYkfVLOHEGPpCaMCZIfc6'
+
+# Path to save the downloaded file
+output_path = 'final_result5.xlsx'
+
+# Download the file
+url = f'https://drive.google.com/uc?id={file_id}'
+gdown.download(url, output_path, quiet=False)
+
+# Now read the downloaded file
+final_result5 = pd.read_excel(output_path)
 
 # Page Configuration
 st.title('✨ Handling Missing Values in Clinical Trials')
