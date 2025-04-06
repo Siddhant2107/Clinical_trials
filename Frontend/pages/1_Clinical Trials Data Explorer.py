@@ -46,12 +46,44 @@ def load_data(file_path):
         return None
 
 # Predefined file paths
+import pandas as pd
+import gdown
+import os
+import streamlit as st
+
+# Define file IDs and local paths
+file_info = {
+    "usecase3_updated.csv": {
+        "file_id": "1uMG_FaqUEmZ9MbZ7DNxbW-2Cs7oLEPL3",
+        "output_path": "usecase3_updated.csv"  
+    },
+    "drop_withdrawals_drop.txt": {
+        "file_id": "1eooUrLIePZ1iygJRqnEEa4GORXuPGyzs",
+        "output_path": "drop_withdrawals_drop.txt"
+    },
+    "facilities_drop.txt": {
+        "file_id": "1FKLcD43Cx_d9YQiQ1Ey9m03LEqrBeGig",
+        "output_path": "facilities_drop.txt"
+    },
+    "reported_events_drop.txt": {
+        "file_id": "134HKNOrP8hlh43-atf6uKz0M5I4V97te",
+        "output_path": "reported_events_drop.txt"
+    },
+    "eligibilities_drop.txt": {
+        "file_id": "1AQ5At-_IkonBMhjte188cqbILRYQYz_E",
+        "output_path": "eligibilities_drop.txt"
+    }
+}
+
+# Download all files from Google Drive
+with st.spinner('Downloading files from Google Drive...'):
+    for file_name, info in file_info.items():
+        url = f"https://drive.google.com/uc?id={info['file_id']}"
+        gdown.download(url, info['output_path'], quiet=False)
+
+# Now you can use these local paths for your data processing
 file_paths = {
-    "usecase3_updated.csv": r"C:\Users\Siddhant Nijhawan\Downloads\NEST\Problem Statements and Data Sets\usecase_3_.csv",
-    "drop_withdrawals_drop.txt": r"C:\Users\Siddhant Nijhawan\Downloads\NEST\Problem Statements and Data Sets\drop_withdrawals.txt",
-    "facilities_drop.txt": r"C:\Users\Siddhant Nijhawan\Downloads\NEST\Problem Statements and Data Sets\facilities.txt",
-    "reported_events_drop.txt": r"C:\Users\Siddhant Nijhawan\Downloads\Nest_Codes\Dropped_columns_files\reported_events_drop.txt",
-    "eligibilities_drop.txt": r"C:\Users\Siddhant Nijhawan\Downloads\NEST\Problem Statements and Data Sets\eligibilities.txt"
+    file_name: info["output_path"] for file_name, info in file_info.items()
 }
 
 # Load data animation
