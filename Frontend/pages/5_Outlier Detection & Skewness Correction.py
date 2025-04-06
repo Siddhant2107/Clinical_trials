@@ -38,9 +38,15 @@ import pandas as pd
 import numpy as np
 import altair as alt
 import matplotlib.pyplot as plt
+import gdown
+import os
 
 # Load dataset
-sidd = pd.read_csv(r"C:\Users\Siddhant Nijhawan\Downloads\Nest_Codes\Dropped_columns_files\null_values_dealt.csv")
+file_id_csv = '1fESesydxwvWkY3Ftqe70JNN616cJLest'  # Replace with your CSV file ID
+output_path_csv = 'null_values_dealt.csv'
+url_csv = f'https://drive.google.com/uc?id={file_id_csv}'
+gdown.download(url_csv, output_path_csv, quiet=False)
+sidd = pd.read_csv(output_path_csv)
 sidd.drop(["Unnamed: 0"], axis=1, inplace=True)
 
 st.title('📊 Outlier Detection & Skewness Handling')
