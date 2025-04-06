@@ -15,3 +15,7 @@ streamlit-lottie
 streamlit-option-menu
 gdown
 xgboost
+pandas
+streamlit
+gdown
+openpyxl
