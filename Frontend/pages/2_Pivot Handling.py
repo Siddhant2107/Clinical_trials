@@ -47,6 +47,8 @@ import time
 from streamlit_lottie import st_lottie
 import requests
 import plotly.express as px
+import gdown
+import os
 
 
 
@@ -101,14 +103,26 @@ def load_lottie_url(url):
 
 # Load datasets with progress bar
 with st.spinner('Loading datasets...'):
-    csv_df = pd.read_csv(r"C:\Users\Siddhant Nijhawan\Downloads\Nest_Codes\Dropped_columns_files\usecase3_updated.csv")
-    facilities_df = pd.read_csv(r"C:\Users\Siddhant Nijhawan\Downloads\Nest_Codes\Dropped_columns_files\facilities_drop.txt", sep="|")
+    # For usecase3_updated.csv
+    file_id_usecase3 = '1RMFbwjz62F_Ie6_5tKnfTzYRMONFH__p'  # Replace with actual ID
+    output_path_usecase3 = 'usecase3_updated.csv'
+    url_usecase3 = f'https://drive.google.com/uc?id={file_id_usecase3}'
+    gdown.download(url_usecase3, output_path_usecase3, quiet=False)
+    csv_df = pd.read_csv(output_path_usecase3)
+    
+    # For facilities_drop.txt
+    file_id_facilities = '1FKLcD43Cx_d9YQiQ1Ey9m03LEqrBeGig'  # Replace with actual ID
+    output_path_facilities = 'facilities_drop.txt'
+    url_facilities = f'https://drive.google.com/uc?id={file_id_facilities}'
+    gdown.download(url_facilities, output_path_facilities, quiet=False)
+    facilities_df = pd.read_csv(output_path_facilities, sep="|")
     
     # Data preprocessing
     facilities_df.drop(['status', 'name', 'state'], axis=1, inplace=True)
     csv_subset = csv_df[['NCT Number', 'Study Status']]
     merged_df = pd.merge(facilities_df, csv_subset, how="inner", left_on="nct_id", right_on="NCT Number")
-
+    
+    
 # Main title with animation
 st.title('🔍 Pivot Handling')
 
