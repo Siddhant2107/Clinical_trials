@@ -38,16 +38,29 @@ import pandas as pd
 import numpy as np
 import altair as alt
 import matplotlib.pyplot as plt
+
+
+
+import pandas as pd
 import gdown
 import os
+import streamlit as st
 
-# Load dataset
-file_id_csv = '1fESesydxwvWkY3Ftqe70JNN616cJLest'  
-output_path_csv = 'null_values_dealt.csv'
-url_csv = f'https://drive.google.com/uc?id={file_id_csv}'
-gdown.download(url_csv, output_path_csv, quiet=False)
-sidd = pd.read_csv(output_path_csv)
-sidd.drop(["Unnamed: 0"], axis=1, inplace=True)
+# File ID from your Google Drive
+null_values_file_id = '1sQqtkvolIozbDTR9KJHG4Xvd_J7MvT7J'  # Replace with actual file ID
+null_values_output_path = 'null_values_dealt.csv'
+
+# Download the file
+url = f'https://drive.google.com/uc?id={null_values_file_id}'
+
+
+# Show a loading spinner during download
+with st.spinner('Loading dataset...'):
+    gdown.download(url, null_values_output_path, quiet=False)
+    
+    # Now read the downloaded file
+    sidd = pd.read_csv(null_values_output_path)
+    sidd.drop(["Unnamed: 0"], axis=1, inplace=True)
 
 st.title('📊 Outlier Detection & Skewness Handling')
 
