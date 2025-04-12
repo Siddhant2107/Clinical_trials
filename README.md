@@ -68,10 +68,10 @@ Clinical trials are crucial in the development of new drugs and treatments. Howe
 
 ### 🔹 ML Model Performance Page
 1. **Model showcase**  
-   ![Model showcase](images/Model showcase.jpg)
+   ![Model showcase](images/Modelshowcase.jpg)
 
 2. **Model Uploading**  
-   ![Model Uploading](images/Model Upload.jpg)
+   ![Model Uploading](images/ModelUpload.jpg)
 
 3. **Results**  
    ![Results](images/Results.jpg)
