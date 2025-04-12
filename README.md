@@ -9,13 +9,14 @@ A data science project that predicts the likelihood of clinical trial completion
 ## 📁 Repository Structure
 
 
+```
 clinical-trial-prediction/
 ├── frontend/                  # Streamlit app and frontend code
 ├── backend/                   # Model code, pipelines, preprocessing, training scripts
 ├── csv/                       # All datasets used in the project
 ├── presentation_and_reports/  # Final reports, presentations, and documentation
 └── README.md                  # This file
-
+```
 ---
 
 ## 🧾 Project Overview
