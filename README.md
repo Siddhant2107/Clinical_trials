@@ -2,7 +2,7 @@
 
 > 🚀 **Top 3 in Use Case | Finalist (Top 12) - NEST 2025**
 
-A data science project that predicts the likelihood of clinical trial completion using a blend of structured and unstructured data, advanced feature engineering, machine learning models, and explainability tools. This project was developed as part of the **NEST (National Educational Startup Tour)** initiative and emerged as one of the **Top 3 teams in its use case**, making it to the **Top 12 finalists** overall.
+A data science project that predicts the likelihood of clinical trial completion using a blend of structured and unstructured data, advanced feature engineering, machine learning models, and explainability tools. This project was developed as part of the **NEST By Novatis** initiative and emerged as one of the **Top 3 teams in its use case**, making it to the **Top 12 finalists** overall.
 
 ---
 
