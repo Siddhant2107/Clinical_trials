@@ -57,6 +57,26 @@ Clinical trials are crucial in the development of new drugs and treatments. Howe
 7. **Healthcare Feature Reduction Journey**  
 8. **ML Model Showcase with Explainability**
 
+
+## 📷 Screenshots
+
+### 🔹 Home Page
+![Home Page](images/Homepage.jpg)
+
+### 🔹 Adverse Event Clustering
+![SHAP Output](images/Umap.jpg)
+
+### 🔹 ML Model Performance Page
+1. **Model showcase**  
+   ![Model showcase](images/Model showcase.jpg)
+
+2. **Model Uploading**  
+   ![Model Uploading](images/Model Upload.jpg)
+
+3. **Results**  
+   ![Results](images/Results.jpg)
+
+
 ---
 
 ## 🧠 Tech Stack
