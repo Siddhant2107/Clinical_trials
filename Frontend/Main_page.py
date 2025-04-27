@@ -286,7 +286,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 st.markdown("""
 <div class="footer">
     <div class="footer-logo">Clinical Trials Analysis Platform</div>
-    <p>Developed with ❤️ by Siddhant Nijhawan</p>
+    <p>Developed with ❤️ by Siddhant Nijhawan and Yuvika Mishra</p>
     <p>© 2025 All Rights Reserved</p>
 </div>
 """, unsafe_allow_html=True)
